@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">
+    <title>Login</title>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form>
+            <!-- Formulário de login -->
+            <input type="text" placeholder="Username" name="username" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+        
+        <div class="social-login">
+            <p>Or login with:</p>
+            <!-- Botões de login social -->
+            <button class="social-btn facebook">Facebook</button>
+            <button class="social-btn google">Google</button>
+            <button class="social-btn twitter">Twitter</button>
+        </div>
+
+        <hr> <!-- Adicione uma linha horizontal para separar o formulário de login do formulário de registro -->
+
+        <h2>Register</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+    </div>
+    <script src="{% static 'accounts/js/login.js' %}"></script>
+</body>
+</html>
