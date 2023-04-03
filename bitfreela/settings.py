@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'home',
     'accounts',
     'projects',
-    'projects',
     'clients',
     'freelancers'
 
