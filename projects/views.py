@@ -19,11 +19,17 @@ def get_user_type(user):
 @login_required(login_url='login')
 def projects_view(request):
     if request.method == 'GET':
-        # Imprime o nome de usuário do usuário logado no console
-        print("Usuário logado:", request.user.username)
 
         user_type = get_user_type(request.user)
-        print(f'{request.user.username} is a {user_type}')
-        
-        return render(request, template_name=r'projects\index.html')
 
+        context = {
+            "user_type": user_type
+        }
+
+        if user_type == "client":
+
+            return render(request, template_name=r'projects\logged_homepage\clients\index.html', context=context)
+
+        elif user_type == "freelancer":
+
+            return render(request, template_name=r'projects\logged_homepage\freelancers\index.html', context=context)
