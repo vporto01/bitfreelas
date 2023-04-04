@@ -48,7 +48,6 @@ class Project(models.Model):
     description = models.TextField()
     deadline = models.DateField()
     budget = models.DecimalField(max_digits=10, decimal_places=2)
-    # skills_required = models.CharField(max_length=500)
     skills_required = models.ManyToManyField(Skill, blank=True)
     project_type_choices = [
         ('fixed', 'Fixed'),
@@ -71,14 +70,6 @@ class Project(models.Model):
     attachments = models.FileField(upload_to='attachments/', null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     proposal_count = models.PositiveIntegerField(default=0)
-
-    # currency_choices = [
-    #     ('usd', 'USD'),
-    #     ('brl', 'BRL'),
-    #     ('btc', 'BTC'),
-    # ]
-
-    # currency = models.CharField(max_length=15, choices=currency_choices)
     currency = models.ForeignKey(Currency, on_delete=models.CASCADE)
     location_preference = models.CharField(max_length=200, null=True, blank=True)
 
