@@ -5,13 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'accounts/login/css/style.css' %}">
     <title>Login</title>
 </head>
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form>
+        <form method="POST">
+            {% csrf_token %}
             <!-- Formulário de login -->
             <input type="text" placeholder="Username" name="username" required>
             <input type="password" placeholder="Password" name="password" required>
@@ -26,15 +27,6 @@
             <button class="social-btn twitter">Twitter</button>
         </div>
 
-        <hr> <!-- Adicione uma linha horizontal para separar o formulário de login do formulário de registro -->
-
-        <h2>Register</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Register</button>
-        </form>
-        <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
     </div>
     <script src="{% static 'accounts/js/login.js' %}"></script>
 </body>

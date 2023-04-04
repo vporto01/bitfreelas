@@ -1,9 +1,22 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login
+from django.urls import reverse
 
 
-def login(request):
-    return render(request, 'accounts/login.html')
+def login_view(request):
+    if request.method == 'GET':
+        return render(request, 'accounts/login.html')
+    else:
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect(reverse('projects'))
+        else:
+            return HttpResponse('Credenciais inválidas')
 
 def register(request):
     if request.method == 'POST':

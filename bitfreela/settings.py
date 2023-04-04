@@ -27,8 +27,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     #libs
+
+    #rest framework
     'rest_framework',
+
+    #sociel auth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
+
+    #----------------------------------------------
     #apps
 
     'home',
