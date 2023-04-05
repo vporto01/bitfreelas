@@ -11,10 +11,10 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form method="POST">
+        <form method="POST" action="login">
             {% csrf_token %}
             <!-- Formulário de login -->
-            <input type="text" placeholder="Username" name="username" required>
+            <input type="text" placeholder="Username" name="email" required>
             <input type="password" placeholder="Password" name="password" required>
             <button type="submit">Login</button>
         </form>
