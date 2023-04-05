@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from .models import Client, Freelancer
+from api.models import Client, Freelancer
 
 def get_user_type(user):
     is_client = Client.objects.filter(user=user).exists()
@@ -33,3 +33,6 @@ def projects_view(request):
         elif user_type == "freelancer":
 
             return render(request, template_name=r'projects\logged_homepage\freelancers\index.html', context=context)
+        
+        else:
+            return HttpResponse('nenhum dos dois')

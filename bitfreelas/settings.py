@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'home',
     'accounts',
     'projects',
+    'api',
 
 
 ]
@@ -60,12 +61,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'bitfreela.urls'
+ROOT_URLCONF = 'bitfreelas.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'bitfreela/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'bitfreelas/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,7 +80,7 @@ TEMPLATES = [
 ]
 
 
-WSGI_APPLICATION = 'bitfreela.wsgi.application'
+WSGI_APPLICATION = 'bitfreelas.wsgi.application'
 
 
 # Database
@@ -129,7 +130,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'bitfreela/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'bitfreelas/static')]
 
 # STATIC_URL = '/static/'
 # STATICFILES_DIRS = [BASE_DIR / "static"]
