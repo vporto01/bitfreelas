@@ -141,3 +141,15 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'bitfreelas/static')]
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com' # Exemplo: 'smtp.gmail.com' para o Gmail
+# EMAIL_PORT = 587 # Exemplo: 587 para o Gmail
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'portogamer21@gmail.com'
+# EMAIL_HOST_PASSWORD = 'Televisao123@gmail'
+# DEFAULT_FROM_EMAIL = 'noreply@yourdomain.com'

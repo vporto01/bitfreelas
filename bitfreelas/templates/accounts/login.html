@@ -11,8 +11,14 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form method="POST" action="login">
+        <form method="POST">
             {% csrf_token %}
+            <!-- Error Messages -->
+            {% if error_message %}
+                <div class="messages">
+                    <div class="error">{{ error_message }}</div>
+                </div>
+            {% endif %}
             <!-- Formulário de login -->
             <input type="text" placeholder="Username" name="email" required>
             <input type="password" placeholder="Password" name="password" required>

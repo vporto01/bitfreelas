@@ -1,3 +1,9 @@
+import uuid
+from django.core.mail import send_mail
+
+from django.conf import settings
+from django.urls import reverse
+
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -28,9 +34,19 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True)
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=150, blank=True)
+    username = models.CharField(_('username'), max_length=30, blank=True)
     is_active = models.BooleanField(_('active'), default=True)
     is_staff = models.BooleanField(_('staff status'), default=False)
     date_joined = models.DateTimeField(_('date joined'), auto_now_add=True)
+
+    is_confirmed = models.BooleanField(_('email confirmed'), default=False)
+    confirmation_token = models.UUIDField(default=uuid.uuid4, editable=False)
+
+    def send_confirmation_email(self):
+        subject = 'Confirme seu registro'
+        message = f'Para confirmar seu registro, acesse o seguinte link: {settings.DEFAULT_FROM_EMAIL}{reverse("accounts:confirm_email", kwargs={"confirmation_token": self.confirmation_token})}'
+        send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [self.email], fail_silently=False)
+
     
     objects = CustomUserManager()
 

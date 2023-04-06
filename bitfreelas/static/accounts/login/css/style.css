@@ -1,7 +1,7 @@
 /* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
     margin: 0;
     padding: 0;
 }
@@ -11,24 +11,33 @@ body {
     width: 350px;
     margin: 100px auto;
     background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
     padding: 30px;
 }
 
 .login-container h2 {
     margin-bottom: 30px;
     text-align: center;
+    font-size: 24px;
+    color: #1c1e21;
 }
 
 .login-container form input {
     display: block;
     width: 100%;
     margin-bottom: 15px;
-    padding: 8px;
+    padding: 10px;
     font-size: 14px;
     border: 1px solid #ccc;
-    border-radius: 3px;
+    border-radius: 5px;
+    background-color: #f7f9fa;
+    transition: all 0.3s ease;
+}
+
+.login-container form input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
 }
 
 .login-container form button {
@@ -37,15 +46,16 @@ body {
     padding: 10px;
     font-size: 16px;
     font-weight: bold;
-    background-color: #4CAF50;
+    background-color: #007bff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     color: #fff;
+    transition: all 0.3s ease;
 }
 
 .login-container form button:hover {
-    background-color: #43A047;
+    background-color: #0056b3;
 }
 
 /* Social Login */
@@ -56,6 +66,8 @@ body {
 
 .social-login p {
     margin-bottom: 15px;
+    font-size: 14px;
+    color: #1c1e21;
 }
 
 .social-btn {
@@ -69,10 +81,11 @@ body {
     cursor: pointer;
     color: #fff;
     margin: 0 5px;
+    transition: all 0.3s ease;
 }
 
 .social-btn.facebook {
-    background-color: #3B5998;
+    background-color: #3b5998;
 }
 
 .social-btn.google {
@@ -80,11 +93,11 @@ body {
 }
 
 .social-btn.twitter {
-    background-color: #55acee;
+    background-color: #1da1f2;
 }
 
 .social-btn.facebook:hover {
-    background-color: #324C81;
+    background-color: #2d4373;
 }
 
 .social-btn.google:hover {
@@ -92,5 +105,36 @@ body {
 }
 
 .social-btn.twitter:hover {
-    background-color: #3b94d9;
+    background-color: #0c85d0;
+}
+
+/* Message Styles */
+.messages {
+    margin-bottom: 15px;
+    position: relative;
+    width: 100%;
+}
+
+.messages div {
+    padding: 10px 15px 10px 45px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.error {
+    background-color: #ffebee;
+    border: 1px solid #ef9a9a;
+    color: #c62828;
+}
+
+.error:before {
+    content: "\26A0";
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: #c62828;
 }

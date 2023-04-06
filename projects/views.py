@@ -16,7 +16,7 @@ def get_user_type(user):
     else:
         return 'unknown'
 
-@login_required(login_url='login')
+@login_required(login_url='/accounts/login/')
 def projects_view(request):
     if request.method == 'GET':
 
