@@ -42,12 +42,10 @@ INSTALLED_APPS = [
 
     #----------------------------------------------
     #apps
-
     'home',
     'accounts',
     'projects',
     'api',
-
 
 ]
 

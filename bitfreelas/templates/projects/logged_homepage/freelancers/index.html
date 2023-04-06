@@ -1,12 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    TESTE - logado na página de projetos como prestador de serviçosss
-</body>
-</html>
+{% extends "projects\logged_homepage\base.html" %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'projects/logged_homepage/freelancers/css/freelancers.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!-- Conteúdo específico para freelancers -->
+
+    <!-- Inclua o banner principal aqui -->
+    <header class="jumbotron jumbotron-fluid">
+        <div class="container text-center">
+            <h1 class="display-4">Bem-vindo ao BitFreelas</h1>
+            <p class="lead">Encontre projetos incríveis e comece a trabalhar hoje mesmo.</p>
+        </div>
+    </header>
+
+    <!-- Inclua a lista de projetos disponíveis aqui -->
+    <!-- Inclua a seção "Meus Projetos" aqui -->
+    <section class="container mt-5">
+        <h2>Meus Projetos</h2>
+        <div class="row">
+            <!-- Use um loop ou inclua projetos individualmente -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Título do projeto</h5>
+                        <p class="card-text">Descrição do projeto...</p>
+                        <a href="#" class="btn btn-primary">Ver detalhes</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Repita para outros projetos -->
+        </div>
+    </section>
+
+    <!-- Inclua a seção de habilidades e especialidades aqui -->
+    <section class="container mt-5">
+        <h2>Habilidades e Especialidades</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="list-group">
+                    <!-- Use um loop ou inclua habilidades individualmente -->
+                    <a href="#" class="list-group-item list-group-item-action">Habilidade 1</a>
+                    <!-- Repita para outras habilidades -->
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="list-group">
+                    <!-- Use um loop ou inclua especialidades individualmente -->
+                    <a href="#" class="list-group-item list-group-item-action">Especialidade 1</a>
+                    <!-- Repita para outras especialidades -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inclua a seção de estatísticas e conquistas aqui -->
+    <section class="container mt-5">
+        <h2>Estatísticas e Conquistas</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Projetos concluídos</h5>
+                        <p class="card-text">42</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Repita para outras estatísticas -->
+        </div>
+    </section>
+{% endblock %}
