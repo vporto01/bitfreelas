@@ -10,9 +10,9 @@ from home import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home),
+    path('home', views.home),
     path('accounts/', include('accounts.urls')),
-    path('projects/', include('projects.urls')),
+    path('', include('projects.urls')),
     path('api/', include('api.urls')),
 ] 
 

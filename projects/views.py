@@ -1,10 +1,8 @@
-from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirect
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate, login
-from django.urls import reverse
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from api.models import Client, Freelancer
+from api.models import Client, Freelancer, Wallets
 from projects.models import Projects
+import requests
 
 def get_user_type(user):
     is_client = Client.objects.filter(user=user).exists()
@@ -74,6 +72,27 @@ def projects_view(request):
         else:
             return redirect('/admin')
 
-# def chat_room(request, room_name):
-#     return render(request, r'projects\logged_homepage\chat\chat_room.html', {'room_name': room_name})
+def get_btc_usd_price():
+    url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd'
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        data = response.json()
+        btc_usd_price = data['bitcoin']['usd']
+        return btc_usd_price
+    
 
+def balance(request):
+
+    address = Wallets.objects.get(user_id=request.user.id).address
+
+    balance_sats = requests.get(f'https://api.blockchain.info/haskoin-store/btc/address/{address}/balance').json()['confirmed']
+
+
+    context = {
+        "balance_sats": balance_sats,
+        "balance_btc": balance_sats/100000000,
+        "balance_usd": f"{(balance_sats/100000000) * get_btc_usd_price():.2f}"
+    }
+
+    return render(request, template_name=r'projects\logged_homepage\clients\balance.html', context=context)

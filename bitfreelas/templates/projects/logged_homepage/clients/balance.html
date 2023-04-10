@@ -1,0 +1,49 @@
+{% extends 'projects/logged_homepage/base/base.html' %}
+{% load static %}
+{% load project_tags %}
+
+{% block content %}
+<div class="content-start transition">
+    <div class="container-fluid dashboard">
+        <div class="content-header">
+            <h1 class="page-title">Balance</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card text-center mb-3">
+                <div class="card-header">
+                    Available Balance
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{balance_btc}} BTC</h3>
+                    <p class="card-text">{{balance_usd}} USD</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card text-center mb-3">
+                <div class="card-header">
+                    Total Balance
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{balance_btc}} BTC</h3>
+                    <p class="card-text">{{balance_usd}} USD</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                <button class="btn btn-primary me-md-2" type="button">Deposit</button>
+                <button class="btn btn-secondary" type="button">Withdraw</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
