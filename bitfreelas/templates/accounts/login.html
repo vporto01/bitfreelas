@@ -1,39 +1,84 @@
 {% load static %}
-
-<!DOCTYPE html>
+{% load project_tags %}
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'accounts/login/css/style.css' %}">
-    <title>Login</title>
+  <head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Login - Bitfreelas</title>
+
+	<!-- Bootstrap CSS-->
+	<link rel="stylesheet" href="{% static 'modules/bootstrap-5.1.3/css/bootstrap.css' %}">
+	<!-- Style CSS -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<!-- Boostrap Icon-->
+	<link rel="stylesheet" href="{% static 'modules/bootstrap-icons/bootstrap-icons.css' %}">
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form method="POST">
-            {% csrf_token %}
-            <!-- Error Messages -->
-            {% if error_message %}
-                <div class="messages">
-                    <div class="error">{{ error_message }}</div>
-                </div>
-            {% endif %}
-            <!-- Formulário de login -->
-            <input type="text" placeholder="Username" name="email" required>
-            <input type="password" placeholder="Password" name="password" required>
-            <button type="submit">Login</button>
-        </form>
+ 
+	<div id="auth">
         
-        <div class="social-login">
-            <p>Or login with:</p>
-            <!-- Botões de login social -->
-            <button class="social-btn facebook">Facebook</button>
-            <button class="social-btn google">Google</button>
-            <button class="social-btn twitter">Twitter</button>
-        </div>
+		<div class="row h-100">
+			<div class="col-lg-7 d-none d-lg-block">
+				<div id="auth-left">
+ 				</div>
+			</div>
+			<div class="col-lg-5 col-12">
+				<div id="auth-right">
+					<div class="auth-logo">
+						<a href="index.html"><img src="{% static 'images/logo.png' %}" alt="Logo"> BitFreelas</a>  
+					</div>
+					<h1 class="auth-title">Log in.</h1>
+					<p class="auth-subtitle mb-5">.</p>
+		
+					<form method="POST">
+						{% csrf_token %}
+						<div class="form-group position-relative has-icon-left mb-4">
+							<input type="text" class="form-control form-control-xl" placeholder="Email" name="email">
+							<div class="form-control-icon">
+								<i class="bi bi-person"></i>
+							</div>
+						</div>
+						<div class="form-group position-relative has-icon-left mb-4">
+							<input type="password" class="form-control form-control-xl" placeholder="Password" name="password">
+							<div class="form-control-icon">
+								<i class="bi bi-shield-lock"></i>
+							</div>
+						</div>
+						<div class="form-check form-check-lg d-flex align-items-end">
+							<input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault">
+							<label class="form-check-label text-gray-600" for="flexCheckDefault">
+								Keep me logged in
+							</label>
+						</div>
+						<button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
+					</form>
+					<div class="text-center mt-5 text-lg fs-4">
+						<p class="text-gray-600">Don't have an account? <a href="/accounts/register" class="font-bold">Sign
+								up</a>.</p>
+						<p><a class="font-bold" href="auth-forgot-password.html">Forgot password?</a>.</p>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+		
+	 
 
-    </div>
-    <script src="{% static 'accounts/js/login.js' %}"></script>
-</body>
+	<!-- General JS Scripts -->
+	<script src="{% static 'js/atrana.js' %}"></script>
+
+	<!-- JS Libraies -->
+	<script src="{% static 'modules/jquery/jquery.min.js' %}"></script>
+	<script src="{% static 'modules/bootstrap-5.1.3/js/bootstrap.bundle.min.js' %}"></script>
+	<script src="{% static 'modules/popper/popper.min.js' %}"></script>
+
+    <!-- Template JS File -->
+	<script src="{% static 'js/script.js' %}"></script>
+	<script src="{% static 'js/custom.js' %}"></script>
+ </body>
 </html>

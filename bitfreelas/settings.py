@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #libs
+    'channels',
 
     #rest framework
     'rest_framework',
@@ -48,6 +49,17 @@ INSTALLED_APPS = [
     'api',
 
 ]
+
+# Configuração do Channels
+ASGI_APPLICATION = 'bitfreelas.routing.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -121,6 +133,11 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+# ...
+# Media files (Uploaded files, Images)
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'bitfreelas/media')
 
 
 # Static files (CSS, JavaScript, Images)

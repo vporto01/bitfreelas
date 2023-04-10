@@ -73,4 +73,3 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         related_query_name="customuser",
         related_name='customuser_set',
     )
-

@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Chat</title>
+</head>
+<body>
+    <div id="chat-text" style="width: 400px; height: 300px; border: 1px solid black; overflow-y: scroll;"></div>
+    <input id="chat-message" type="text" size="100">
+
+    <button id="send-button">Enviar</button>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script>
+        const roomName = JSON.parse('{{ room_name|escapejs }}');
+        const chatSocket = new WebSocket(
+            'ws://' + window.location.host +
+            '/ws/chat/' + roomName + '/');
+
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            const message = data['message'];
+            const chatText = document.querySelector('#chat-text');
+            chatText.innerHTML += '<br>' + message;
+            chatText.scrollTop = chatText.scrollHeight;
+        };
+
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+
+        document.querySelector('#send-button').onclick = function(e) {
+            const messageInput = document.querySelector('#chat-message');
+            const message = messageInput.value;
+            chatSocket.send(JSON.stringify({
+                'message': message
+            }));
+            messageInput.value = '';
+        };
+
+        document.querySelector('#chat-message').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // Enter key
+                document.querySelector('#send-button').click();
+            }
+        };
+    </script>
+</body>
+</html>
+

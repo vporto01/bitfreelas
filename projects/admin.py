@@ -58,3 +58,4 @@ from .models import *
 # admin.site.register(Category)
 # admin.site.register(Skill)
 # admin.site.register(Currency)
+admin.site.register(Projects)
