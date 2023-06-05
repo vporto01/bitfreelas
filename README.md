@@ -1,4 +1,4 @@
-BITFREELAS
+BITFREELAS |
 This Django application is a Bitcoin-only freelancing platform designed to connect clients and freelancers. It allows users to create and manage projects, and supports transactions exclusively in Bitcoin.
 
 Features
