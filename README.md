@@ -15,7 +15,7 @@ Wallets: The Wallets model represents the Bitcoin wallets of users. Each wallet 
 API: The application provides a RESTful API with endpoints for clients, freelancers, and user registration. This allows for easy integration with other services or front-end applications.
 
 Installation and Setup
-Clone the repository: git clone https://github.com/username/repository.git
+Clone the repository: git clone https://github.com/vporto01/bitfreelas.git
 Navigate to the project directory: cd repository
 Install the requirements: pip install -r requirements.txt
 Run the migrations: python manage.py migrate
